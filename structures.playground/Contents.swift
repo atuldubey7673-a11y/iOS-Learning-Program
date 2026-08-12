@@ -1,8 +1,8 @@
 import UIKit
 
 struct Details{
-    var name:String
-    var age:Int
+    var name:String="james"
+    var age:Int=40
     var gender:String
     
     
@@ -23,7 +23,7 @@ print(p1.age)
 
 p1.sayhello()
 p2.sayhello()
-  
+   
 
 
 struct  Car{
@@ -69,8 +69,8 @@ struct shirt{
 
 //string intializers
 
-//example of default initializers
-let string=String.init() // by using syntatic sugar , we can remove the .init part here
+// default initializers
+let string=String.init() // by using syntatic sugar , we can remove the .init part here while creating instances
 let bool=Bool.init()
 let int=Int.init()
 
@@ -78,19 +78,80 @@ let int=Int.init()
 //syntactic sugar
 
 func sumOfNumbers(num1:Int,num2:Int)->Int{
-     num1+num2 //absence of return keyword when only a single line is written, only in case of a single line
+     num1+num2 //absence of return keyword when only a single line is written, only in case of a single line is example of syntactic sugar
 }
 print("the string contains the value \(string)")
 print("the string contains the value \(bool)")
 print("the string contains the value \(int)")
 
+struct Odometer{
+    var count :Int=0
+}
 
+let  odometer=Odometer()
+print(odometer.count)
 
- //memberwise initializers
-
+//memberwise initializers-takes all members as properties,except
+struct Chair{
+    var hasLegs:Bool
+    var hasNumberOfLegs:Int
+    
+}
+//var redChair=
 
 
 
 
 
 //custom initializers
+//struct Temperature{
+//    var celsius:Double
+//   
+//}
+//let todaytemp=Temperature(celsius: 90)
+//var tempfahrenheit=98.6
+//var tempcelsius=(tempfahrenheit-32)*1.8
+//var tomtemp=Temperature(celsius:tempcelsius)
+ 
+
+struct Temperature{
+    var celsius:Double
+    init(celsius:Double){
+    self.celsius=celsius
+}
+    init(fahrenheit:Double){
+    celsius=(fahrenheit-32)*1.8
+}
+    init(kelvin:Double){
+        celsius=kelvin-273.15
+    }
+    init(){
+        celsius=0
+    }
+   
+}
+
+
+var newTemperature=Temperature(fahrenheit: 100)
+print(newTemperature)
+var newTemperatuteinCeslius=Temperature(celsius: 38)
+print(newTemperatuteinCeslius)
+var defaulttemperature=Temperature()
+
+print(newTemperatuteinCeslius)
+
+
+
+//  struct are value types-when you assign a struct to another variable a copy of it is created and no changes are made in the in copy instance by making change in the original variable
+
+
+struct Book{
+    var author:String
+    var title:String
+}
+var book1=Book(author: "ram", title: "the saga of world")
+var book2=book1
+book1.author="shyam"
+print(book2.author)
+
+
