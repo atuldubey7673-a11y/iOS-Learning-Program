@@ -153,5 +153,3 @@ var book1=Book(author: "ram", title: "the saga of world")
 var book2=book1
 book1.author="shyam"
 print(book2.author)
-
-
