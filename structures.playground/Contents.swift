@@ -257,3 +257,41 @@ struct Stepcounter{
 var currentSteps=Stepcounter()
 currentSteps.totalsteps=20
 currentSteps.totalsteps=10
+
+
+//-----Type Properties and Methods------//
+struct Temp{
+    
+    static  let  boilingPoint=100 // helps to manage memory by creating static values for all instances
+    
+}
+
+let boilingPoint=Temp.boilingPoint
+let newboilingPoint=Temp.boilingPoint
+
+
+//-----Structure as a value type-----//
+struct Size2{
+    var length:Double
+    var breadth:Double
+    }
+ var someSize1=Size2(length: 100, breadth: 20)
+print(someSize1.length)
+ var anotherSize=someSize1
+someSize1.length=50
+print(anotherSize.length)
+print(someSize1.length)
+
+
+
+struct Cartype{
+    var color:color
+    
+    var description:String{
+        print("the color of car is \(color)")
+        
+    }
+    
+}
+    
+
