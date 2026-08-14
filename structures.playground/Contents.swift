@@ -113,32 +113,32 @@ struct Chair{
 //var tempcelsius=(tempfahrenheit-32)*1.8
 //var tomtemp=Temperature(celsius:tempcelsius)
  
-
-struct Temperature{
-    var celsius:Double
-    init(celsius:Double){
-    self.celsius=celsius
-}
-    init(fahrenheit:Double){
-    celsius=(fahrenheit-32)*1.8
-}
-    init(kelvin:Double){
-        celsius=kelvin-273.15
-    }
-    init(){
-        celsius=0
-    }
-   
-}
-
-
-var newTemperature=Temperature(fahrenheit: 100)
-print(newTemperature)
-var newTemperatuteinCeslius=Temperature(celsius: 38)
-print(newTemperatuteinCeslius)
-var defaulttemperature=Temperature()
-
-print(newTemperatuteinCeslius)
+//
+//struct Temperature{
+//    var celsius:Double
+//    init(celsius:Double){
+//    self.celsius=celsius
+//}
+//    init(fahrenheit:Double){
+//    celsius=(fahrenheit-32)*1.8
+//}
+//    init(kelvin:Double){
+//        celsius=kelvin-273.15
+//    }
+//    init(){
+//        celsius=0
+//    }
+//   
+//}
+//
+//
+//var newTemperature=Temperature(fahrenheit: 100)
+//print(newTemperature)
+//var newTemperatuteinCeslius=Temperature(celsius: 38)
+//print(newTemperatuteinCeslius)
+//var defaulttemperature=Temperature()
+//
+//print(newTemperatuteinCeslius)
 
 
 
@@ -153,3 +153,107 @@ var book1=Book(author: "ram", title: "the saga of world")
 var book2=book1
 book1.author="shyam"
 print(book2.author)
+
+
+//instance methods-func inside structues are called methods
+
+struct Size{  // size is a type
+    var height:Double
+    var width:Double
+    func area() -> Double{
+          width * height
+    }
+    
+}
+var someSize=Size(height: 100, width: 20)
+print(someSize.area())
+ 
+
+//mutating methods-helps to update the properties of a instance on which it is called in struct and enum
+
+struct   Speedometer{
+    var count :Int=0
+    
+    mutating  func increase(){
+        count+=10
+    }
+    mutating func increaseBy( by amount:Int){
+        count += amount
+        
+    }
+    mutating  func reset(){
+        count=0
+    }
+}
+
+var speedc1=Speedometer()
+speedc1.increase()
+speedc1.increase()
+speedc1.increaseBy(by: 200)
+print(speedc1)
+  
+
+
+//struct Temperature{
+//    let celsius:Double
+//    let fahrenheit:Double
+//    let kelvin :Double
+//    init (celsius:Double){
+//        self.celsius=celsius //self is used for identification for the celsius here
+//        fahrenheit=celsius*1.8+32
+//        kelvin=celsius+273.15
+//    }
+//    init (fahrenheit:Double){
+//        self.fahrenheit=fahrenheit
+//        celsius=(fahrenheit-32)*1.8
+//        kelvin=celsius+273.15
+//    }
+//    init (kelvin:Double){
+//        self.kelvin=kelvin
+//        celsius=kelvin-273.15
+//        fahrenheit=celsius*1.8+32
+//        
+//    }
+//    
+//}
+//problerm here is that for large number of properties the complexities increase
+//let currentTemp=Temperature(celsius: 0)
+//print(currentTemp.fahrenheit,currentTemp.celsius,currentTemp.kelvin)
+//print(currentTemp.kelvin)
+
+
+
+//------- concept of computed property --------//
+
+struct Temperature{
+    var celsius:Double
+    var fahrenheit:Double{
+        celsius*1.8+32
+    }
+    var kelvin:Double{
+        celsius+273.15
+    }
+}
+var temp1=Temperature(celsius: 0)
+print(temp1.fahrenheit)
+print(temp1.kelvin)
+
+
+//------Property Observers------//
+
+struct Stepcounter{
+    var totalsteps:Int=0{
+        willSet{
+            print("about to set the total steps to \(newValue)")
+        }
+        
+        didSet{
+            if totalsteps>oldValue {
+                print("Added \(totalsteps - oldValue) steps")
+            }
+        }
+    }
+}
+var currentSteps=Stepcounter()
+currentSteps.totalsteps=20
+currentSteps.totalsteps=10
