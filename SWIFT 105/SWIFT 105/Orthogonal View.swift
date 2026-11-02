@@ -9,10 +9,29 @@ import SwiftUI
 
 struct Orthogonal_View: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView{
+            VStack(alignment: .leading){
+                ForEach(0..<10){
+                    Text("restaurants \($0)")
+                        .font(.largeTitle)
+                    Spacer()
+                    ScrollView(.horizontal){
+                        HStack(spacing:10){
+                            ForEach(0..<10){
+                                Text("food \($0)")
+                                    .frame(width: 300,height: 300)
+                                    .background(.pink.opacity(0.5))
+                            }
+                        }
+                    }
+                }
+            }
+            
+            
+        }
     }
+    
 }
-
 #Preview {
     Orthogonal_View()
 }
